@@ -51,23 +51,13 @@ int DrawSnake(SnakeXY* Snake, int Move)
 	//gotoxy(Snake[Move].x * 2, Snake[Move].y);
 	//printf("♂"); // 力老 利霸 弊府扁
 
-	int Length = (int)_msize(Snake) / sizeof(SnakeXY);
+	int body = Move - 1 < 0 ? (int)_msize(Snake) / sizeof(SnakeXY) - 1 : Move - 1;
 
-	for (int i = 0; i < Length; i++)
-	{
+	gotoxy(Snake[Move].x * 2, Snake[Move].y); // 赣府
+	printf("≤"); 
 
-		if (i == Move)
-		{
-			gotoxy(Snake[Move].x * 2, Snake[Move].y);
-			printf("≤");
-		}
-		else
-		{
-			gotoxy(Snake[i].x * 2, Snake[i].y);
-			printf("♂");
-		}
-		
-	}
+	gotoxy(Snake[body].x * 2, Snake[body].y); // 个
+	printf("♂");
 
 	return Move;
 }
